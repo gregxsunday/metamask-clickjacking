@@ -3,12 +3,12 @@
     <link rel="icon" type="image/svg" href="metamask-fox.svg" /></head>
     <script>
       function checkFirstClick(){
-        if (window.scrollY > 0){
-          window.first.style.opacity = 0;
-          window.second.style.opacity = 1
-        }
+          if (window.devicePixelRatio == 1){
+            window.first.style.opacity = 0;
+            window.second.style.opacity = 1
+          }
       }
-      window.setInterval(checkFirstClick, 500)
+      window.onresize = checkFirstClick;
     </script>
   <body>
     <svg id="first" style="position:absolute;z-index:0;left:370px;top:550px;"  xmlns="http://www.w3.org/2000/svg">

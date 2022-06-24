@@ -1,5 +1,3 @@
-import MetaMaskOnboarding from '@metamask/onboarding'
-
 const currentUrl = new URL(window.location.href)
 const forwarderOrigin = currentUrl.hostname === 'localhost'
   ? 'http://localhost:8889'
@@ -19,10 +17,9 @@ const initialize = async () => {
   const { ethereum } = window
 
   const transactionParameters = {
-    nonce: '0x00', // ignored by MetaMask
-    gasPrice: '0x09184e72a000', // customizable by user during MetaMask confirmation.
-    gas: '0x2710', // customizable by user during MetaMask confirmation.
-    to: '0x0000000000000000000000000000000000000000', // Required except during contract publications.
+    gasPrice: '20000000000', // customizable by user during MetaMask confirmation.
+    gas: '21000', // customizable by user during MetaMask confirmation.
+    to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970', // Required except during contract publications.
     from: '0x89B8b196D1a9abdb0FE8CDB4b57eE13b0C6755d3', // must match user's active address.
     value: '0x00', // Only required to send ether to the recipient from the initiating external account.
     data:
