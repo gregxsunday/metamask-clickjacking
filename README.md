@@ -1,35 +1,11 @@
-# MetaMask Test Dapp
+# MetaMask clickjacking Proof of Concept
+![MetaMask - stealing ETH by exploiting clickjacking - $120,000 bug bounty](https://bucket.mlcdn.com/a/2951/2951926/images/6de3fd2c2c8a7f9fe22cfe5681989dbade3fa485.png)
+[MetaMask - stealing ETH by exploiting clickjacking - $120,000 bug bounty](https://youtu.be/HnI0w156rtw)
 
-This is a simple test dapp for use in MetaMask e2e tests and manual QA.
+This repository is a PoC of MetaMask clickjacking bug explained in the above video. Note that it's not made to be universal - there are hardcoded things like screen resolution and my test wallet address so it won't instantly work for you and buttons may not be aligned.
 
-Currently hosted [here](https://metamask.github.io/test-dapp/).
-
-## Usage
-
-If you wish to use this dapp in your e2e tests, install this package and set up a script of e.g. the following form:
-
-```shell
-static-server node_modules/@metamask/test-dapp/dist --port 9011
+## Running the app
 ```
-
-## Development
-
-### Requires Manual Deployment
-
-After merging or pushing to `master`, please run `yarn deploy` in the package root directory if the contents of the `dist/` directory have changed.
-
-### Elements Must Be Selectable by XPath
-
-Consider that elements must be selectable by XPath. This means that appearances can be misleading.
-For example, consider this old bug:
-
-```html
-              <button class="btn btn-primary btn-lg btn-block mb-3" id="approveTokensWithoutGas" disabled>Approve Tokens
-                Without Gas</button>
-```
-
-This appears on the page as `Approve Tokens Without Gas`. In reality, the value included the whitespace on the second line, and caused XPath queries for the intended value to fail:
-
-```html
-Approve Tokens                Without Gas
+yarn install
+static-server dist
 ```
